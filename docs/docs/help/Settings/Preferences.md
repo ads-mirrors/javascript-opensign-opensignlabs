@@ -101,7 +101,7 @@ Decide whether the document should be signed **sequentially** or **simultaneousl
 > Users can change this option while creating the document or a template.
 
 ---
-## 📬 Use profile name as sender
+## ✉️ Use profile name as sender
 
 - **On** – When this option is enabled, your profile name will be used as the sender name in Request Signature and Document Completion emails.
 
