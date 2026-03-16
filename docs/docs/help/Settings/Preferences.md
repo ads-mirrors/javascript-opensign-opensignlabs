@@ -101,7 +101,13 @@ Decide whether the document should be signed **sequentially** or **simultaneousl
 > Users can change this option while creating the document or a template.
 
 ---
+## 📬 Use profile name as sender
 
+- **On** – When this option is enabled, your profile name will be used as the sender name in Request Signature and Document Completion emails.
+
+- **Off** – When it is disabled, your SMTP email ID will be used as the sender name.
+
+---
 ## 🚫 Enable Tour
 
 The tour feature provides guidance for first-time users. You can turn this off for a cleaner, uninterrupted experience:
