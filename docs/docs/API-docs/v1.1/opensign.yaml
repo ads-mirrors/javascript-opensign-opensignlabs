@@ -6076,7 +6076,7 @@ components:
           example: true
         timeToCompleteDays:
           type: number
-          description: time to complete days is used to calculate expiry date of your document
+          description: time to complete days is used to calculate expiry date of your document. If this field is present in the request body, it overrides the template value, even when set to 0. If omitted, the template value is used.
           format: number
           example: 15
         enableOTP:
@@ -6110,7 +6110,7 @@ components:
             The email address of the person or organization that users can reply to. If this field is present in the request body, it overrides the template value, even when set to an empty string (""). If omitted, the template value is used.
 
             If nothing is set, it will use the owner’s preferences. If the owner’s preferences are also not set, it will default to "".
-            
+
           example: mailer@opensignlabs.com
         allow_modifications:
           type: boolean
@@ -6132,7 +6132,7 @@ components:
           example: false
         remind_once_in_every:
           type: number
-          description: "Number of days between reminders. This is only applicable when auto_reminder is set to true."
+          description: Number of days between reminders. This is only applicable when auto_reminder is set to true.  If this field is present in the request body, it overrides the template value, even when set to 0. If omitted, the template value is used.
           example: 5
         merge_certificate: 
           type: boolean
@@ -6168,7 +6168,7 @@ components:
           example: ["user@example.com","user2@example.com"]
           description: |
             bcc (blind carbon copy): Users added here will receive a notification email once the document is completed.
-            If this field is present in the request body, it overrides the template value, even when provided as an empty array ([]).
+            If this field is present in the request body, it overrides the template value, even when provided as an empty array ([]) or empty string "".
             If omitted, the template value is used.
         prefill: 
           type: object
