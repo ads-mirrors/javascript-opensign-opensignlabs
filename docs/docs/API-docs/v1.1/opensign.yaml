@@ -6168,8 +6168,8 @@ components:
           example: ["user@example.com","user2@example.com"]
           description: |
             bcc (blind carbon copy): Users added here will receive a notification email once the document is completed.
-            If this field is present in the request body, it overrides the template value, even when provided as an empty array ([]) or empty string "".
-            If omitted, the template value is used.
+            If this field is present in the request body, it overrides the template value, even when provided as an empty array ([]).
+            If omitted or provided empty string ("") the template value is used.
         prefill: 
           type: object
           properties:
