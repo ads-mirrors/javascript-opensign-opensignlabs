@@ -6054,6 +6054,8 @@ components:
           type: boolean
           description: |
             This parameter allows you to specify whether you want emails to be sent to signers. The default value is "true". If the value of this parameter is "true" and no 'email_subject'/'email_body' parameters are specified default email templates will be used.
+
+            If the field is omitted or provided as an empty/invalid value, the template value is used.
           example: true
         email_subject:
           type: string
@@ -6065,7 +6067,12 @@ components:
           example: "<p>Hi {{receiver_name}},</p><p>We hope this email finds you well. <strong>{{sender_name}}</strong> has requested you to review and sign <strong>{{document_title}}</strong>.</p><p>Your signature is crucial to proceed with the next steps as it signifies your agreement and authorization.</p><p><a href='{{signing_url}}'>Sign here</a></p><p>If you have any questions or need further clarification, please contact the sender.</p><p>Thanks,<br>Team OpenSign™</p>"
         sendInOrder:
           type: boolean
-          description: "If set to 'true', only the first signer will receive the signature request email initially. Emails to subsequent signers will be triggered sequentially, with each sent only after the previous signer has completed their signing. By default, sendInOrder is set to 'true'."
+          description: |
+            **true** - Only the first signer receives the signature request email initially. Each subsequent signer is notified in sequence, only after the previous signer has completed their signing. This is the default behavior.
+
+            **false** - All signers receive the signature request email simultaneously.
+
+            If the field is omitted or provided as an empty/invalid value, the template value is used.
           example: true
         timeToCompleteDays:
           type: number
@@ -6074,23 +6081,45 @@ components:
           example: 15
         enableOTP:
           type: boolean
-          description: "true - this option will enable OTP verification. Users will receive a verification code via email, which they must enter to sign the document. false -  this option will disable OTP verification, allowing users to sign the document directly without additional steps."
+          description: |
+            **true** - this option will enable OTP verification. Users will receive a verification code via email, which they must enter to sign the document. 
+            
+            **false** -  this option will disable OTP verification, allowing users to sign the document directly without additional steps.
+
+            If the field is omitted or provided as an empty/invalid value, the template value is used.
           example: false
         enableTour:
           type: boolean
-          description: "true - this option will enable a guided tour for signers, providing instructions during the signing process. false - disable the guided tour, ensuring a faster, uninterrupted signing experience."
+          description: |
+            **true** - this option will enable a guided tour for signers, providing instructions during the signing process. 
+            
+            **false** - disable the guided tour, ensuring a faster, uninterrupted signing experience.
+
+            If the field is omitted or provided as an empty/invalid value, the template value is used.
           example: false
         sender_name:
           type: string
-          description: The name of the person or organization on whose behalf the email is being sent.
+          description: |
+            The name of the person or organization on whose behalf the email is being sent. If this field is present in the request body, it overrides the template value, even when set to an empty string (""). If omitted, the template value is used.
+            
+            If nothing is set, it will use the owner’s preferences. If the owner’s preferences are also not set, it will default to "".
           example: opensign™
         sender_email:
           type: string
-          description: The email address of the person or organization that users can reply to.
+          description: |
+            The email address of the person or organization that users can reply to. If this field is present in the request body, it overrides the template value, even when set to an empty string (""). If omitted, the template value is used.
+
+            If nothing is set, it will use the owner’s preferences. If the owner’s preferences are also not set, it will default to "".
+            
           example: mailer@opensignlabs.com
         allow_modifications:
           type: boolean
-          description: "true - Permits signers to add elements such as signatures, initials, stamps, or text on top of existing widgets in the document. false - Restricts signers from adding any additional elements to the document. This is the default value."
+          description: |
+            **true** - Permits signers to add elements such as signatures, initials, stamps, or text on top of existing widgets in the document. 
+
+            **false** - Restricts signers from adding any additional elements to the document. This is the default value.
+
+            If the field is omitted or provided as an empty/invalid value, the template value is used.
           example: false
         file:
           type: string
@@ -6099,7 +6128,7 @@ components:
           example: ""
         auto_reminder:
           type: boolean
-          description: "Set to true to enable automatic reminders. Set to false to disable them (default behavior)."
+          description: Set to true to enable automatic reminders. Set to false to disable them (default behavior). If the field is omitted or provided as an empty/invalid value, the template value is used.
           example: false
         remind_once_in_every:
           type: number
@@ -6123,6 +6152,10 @@ components:
             **false** - The document creator will not receive an email notification whenever a signer signs the document.
 
             Note: Regardless of this setting, a completion email with the signed document and completion certificate attached is depend on 'send_email' parameter.
+        redirect_url:
+          type: string
+          description: Specifies the URL where the signer will be redirected upon completing the document signing process. If this field is present in the request body, it overrides the template value, even when set to an empty string (""). If omitted, the template value is used.
+          example: ""
         pen_colors:
           type: array
           items:
@@ -6134,7 +6167,9 @@ components:
             type: string
           example: ["user@example.com","user2@example.com"]
           description: |
-            bcc (blind carbon copy): Users added here will receive a notification email once the document is completed.  
+            bcc (blind carbon copy): Users added here will receive a notification email once the document is completed.
+            If this field is present in the request body, it overrides the template value, even when provided as an empty array ([]).
+            If omitted, the template value is used.
         prefill: 
           type: object
           properties:
