@@ -20,6 +20,16 @@ Make sure Docker is running in the background before proceeding.
 **Warning:** The commands below should only be used when installing OpenSign for the first time. You may loose your settings as this will overwrite .env & caddy files.
 
 ### Running on a custom domain
+
+Point a subdomain to the server where you will be executing these commands by adding the correct A record to your DNS settings.
+
+Copy the command below, paste it into the terminal, and press Enter to pull and start the containers automatically. 
+
+Make sure to replace the host URL with your subdomain where OpenSign will be accessible. 
+
+
+> ⚠️ **WARNING:** MAKE SURE THAT PORT **27017** IS NOT EXPOSED TO THE INTERNET, AS THE DEFAULT CONFIGURATION DOES NOT ENABLE MONGODB AUTHENTICATION.
+  
 Command for linux/MacOS 
 ```
 export HOST_URL=https://opensign.yourdomain.com && curl --remote-name-all https://raw.githubusercontent.com/OpenSignLabs/OpenSign/main/docker-compose.yml https://raw.githubusercontent.com/OpenSignLabs/OpenSign/main/Caddyfile https://raw.githubusercontent.com/OpenSignLabs/OpenSign/main/.env.local_dev && mv .env.local_dev .env.prod && docker compose up --force-recreate
@@ -33,14 +43,6 @@ Command for Windows (**CMD/Terminal**)
 set HOST_URL=https://opensign.yourdomain.com && curl -O https://raw.githubusercontent.com/OpenSignLabs/OpenSign/main/docker-compose.yml && curl -O https://raw.githubusercontent.com/OpenSignLabs/OpenSign/main/Caddyfile && curl -O https://raw.githubusercontent.com/OpenSignLabs/OpenSign/main/.env.local_dev && rename .env.local_dev .env.prod && docker compose up --force-recreate
 ```
  
-Copy the command above, paste it into the terminal, and press Enter to pull and start the containers automatically. 
-
-Make sure to replace the host URL with your subdomain where OpenSign will be accessible. 
-
-You will also need to point the subdomain to the server executing these commands by adding the correct A record to your DNS settings.
-
-> ⚠️ **WARNING:** MAKE SURE THAT PORT **27017** IS NOT EXPOSED TO THE INTERNET, AS THE DEFAULT CONFIGURATION DOES NOT ENABLE MONGODB AUTHENTICATION.
-  
 ### Running locally
 If instead want to run locally try out below commands.
   
