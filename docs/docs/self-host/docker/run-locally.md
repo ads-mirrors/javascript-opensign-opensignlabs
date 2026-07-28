@@ -72,6 +72,7 @@ Once the deployment is successful, the application will be accessible at [https:
 To set up OpenSign™ locally using Docker, the following prerequisites are required: 
 
 Add below Environment Variables to the ".env.prod" file that is automatically created in order to personalize your installation:
+> Beginner note: The .env.prod file is created in the current directory (the same directory where you ran the previous commands). On macOS, files that begin with a dot (.) are hidden by default. To view hidden files in Finder, press Cmd + Shift + . (period), or run ls -a in Terminal. Once you locate the file, you can edit it using any text editor or a command-line editor such as vi or nano.
 
 | Environment Variable  | Value | Description |
 | ------------- | ------------- | ------------- |
